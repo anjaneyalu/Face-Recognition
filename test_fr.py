@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[1]:
+
 
 
 from __future__ import absolute_import
@@ -18,7 +18,7 @@ import PIL.Image
 import os
 
 
-# In[2]:
+
 
 def load_pb(path_to_pb):
     with tf.gfile.GFile(path_to_pb, "rb") as f:
