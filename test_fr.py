@@ -18,7 +18,7 @@ import PIL.Image
 import os
 
 
-
+import pandas
 
 def load_pb(path_to_pb):
     with tf.gfile.GFile(path_to_pb, "rb") as f:
