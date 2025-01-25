@@ -1,8 +1,3 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-
-
 
 from __future__ import absolute_import
 from __future__ import division
@@ -26,23 +21,10 @@ def load_pb(path_to_pb):
         graph_def.ParseFromString(f.read())
         tf.import_graph_def(graph_def, name='')
 
-
-# In[3]:
-
-
-#ls
-
-
-# In[4]:
-
-
 load_pb('MobileFaceNet_9925_9680.pb')
     
 inputs_placeholder = tf.get_default_graph().get_tensor_by_name("input:0")
 embeddings = tf.get_default_graph().get_tensor_by_name("embeddings:0")
-
-
-# In[5]:
 
 
 def image_to_embedding(image, embeddings):
@@ -56,9 +38,6 @@ def image_to_embedding(image, embeddings):
         embed = sess.run(embeddings, feed_dict={inputs_placeholder:x_train})
 
     return sklearn.preprocessing.normalize(embed)
-
-
-# In[6]:
 
 
 def recognize_face(face_image, input_embeddings, embeddings):
@@ -113,20 +92,6 @@ for file in glob.glob("images/*"):
         image_file = cv2.imread(file, 1)
 
 """
-# In[9]:
-
-
-#image_file
-
-
-# In[10]:
-
-
-#create_input_image_embeddings(image_file)
-
-
-# In[11]:
-
 
 import glob
 import sklearn.preprocessing
@@ -194,22 +159,6 @@ def recognize_faces_in_cam(input_embeddings):
     cv2.destroyAllWindows()
 
 
-# In[12]:
-
-
-#create_input_image_embeddings()
-
-
-# In[14]:
-
-
 input_embeddings = create_input_image_embeddings()
 
-
-# In[15]:
-
-
 recognize_faces_in_cam(input_embeddings)
-
-
-# In[ ]:
